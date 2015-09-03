@@ -44,11 +44,13 @@ module ExceptionNotificationSample
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # ExceptionNotifier config
+    config.middleware.use ExceptionNotifier,
+      :email_prefix => "[Exception Occured] ",
+      :sender_address => %{"Dimitri Kurashvili" <dimitri.kurashvili@telasi.ge>},
+      :exception_recipients => %w{dimakura@gmail.com}
   end
 end
 
-ExceptionNotificationSample::Application.config.middleware.use ExceptionNotifier,
-  :email_prefix => "[Exception Occured] ",
-  :sender_address => %{"Dimitri Kurashvili" <dimitri.kurashvili@telasi.ge>},
-  :exception_recipients => %w{dimakura@gmail.com}
 
